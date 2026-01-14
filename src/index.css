@@ -1,0 +1,17 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+main {
+    display: flex;
+    gap: 100px;
+}
+
+.actions-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
