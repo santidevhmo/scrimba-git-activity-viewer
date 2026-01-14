@@ -1,6 +1,5 @@
-import { renderBranches } from "./utils/renderData.js";
+import { renderBranches, renderMembers } from "./utils/renderData.js";
 
-console.log("RUNNING INDEX JS")
-// Initial render of lists based on current JSON file data
+// Initial render of lists (branches and members lists) based on current JSON file data
 await renderBranches()
-// render members
+await renderMembers()

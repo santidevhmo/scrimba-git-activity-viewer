@@ -30,7 +30,7 @@ Stretch goals:
 - [x] Define data structures of Team Members, Branches, and Actions
 - [] Render current data:
     - [x] Render branches 
-    - [] Render members
+    - [x] Render members
 - [] Add functionality to "Register a new branch" button
 - [] Add functionality to "Edit Git Repo Name" button
 - [] Add functionality to "Create a new team member" button
