@@ -25,7 +25,7 @@ async function renderBranches() {
             const branchNode = document.createElement('div');
             // Create two paragraph elements
             const branchNameNode = document.createElement('h3');
-            branchNameNode.textContent = branchesData[i].title
+            branchNameNode.textContent = branchesData[i].name
             const branchStatusNode = document.createElement('p');
             branchStatusNode.textContent = branchesData[i].status
             // Append the paragraphs to the div

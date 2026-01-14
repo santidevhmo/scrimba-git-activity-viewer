@@ -1,7 +1,7 @@
 [
     {
         "id": "branch1",
-        "title": "main",
+        "name": "main",
         "status": "Root",
         "members": ["dev1"]
     }

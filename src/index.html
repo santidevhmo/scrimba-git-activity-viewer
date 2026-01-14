@@ -12,20 +12,44 @@
     <h1>Git Repo Name Here</h1>
 
     <main>
+        <!-- Buttons with actions -->
         <div class="actions-container">
             <h1>Actions</h1>
             <button>Register a new branch</button>
             <button id="add-team-member">Add a new team member</button>
             <button>Edit repo name</button>
         </div>
-        <div class="activity-container">
+        <!-- Inputs to fill to add new elements -->
+        <div class="input-container">
+            <h1>Inputs</h1>
+            <p>Select an action to show its inputs</p>
+            <h2>Register a new branch</h2>
+            <form action="/submit" method="POST">
+                <label for="branch-name">Name</label><br>
+                <input type="text" id="branch-name" name="branch-name" value=""><br>
+                <fieldset>
+                    <legend>Status</legend>
+                    <div>
+                      <input type="radio" id="huey" name="drone" value="huey" checked />
+                      <label for="huey">In progress</label>
+                    </div>
+                    <div>
+                      <input type="radio" id="dewey" name="drone" value="dewey" />
+                      <label for="dewey">Merged</label>
+                    </div>
+                  </fieldset>
+                <input type="submit" value="Submit">
+            </form> 
+        </div>
+        <!-- Branches List Container -->
+        <div class="branches-container">
             <h1>Project branches</h1>
             <div id="branches-list">
                 <p>Loading branches...</p>
             </div>
         </div>
     </main>
-
+    <!-- Team members list container -->
     <div>
         <h1>Team members</h1>
         <div id="members-list">
