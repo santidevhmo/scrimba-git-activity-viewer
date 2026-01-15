@@ -24,18 +24,19 @@
             <h1>Inputs</h1>
             <p>Select an action to show its inputs</p>
             <h2>Register a new branch</h2>
-            <form action="/submit" method="POST">
+            <!-- New Branch Submit Form -->
+            <form id="new-branch-form" method="POST">
                 <label for="branch-name">Name</label><br>
-                <input type="text" id="branch-name" name="branch-name" value=""><br>
+                <input type="text" id="branch-name" name="name" value="" placeholder="Steve Wozniak" required><br>
                 <fieldset>
                     <legend>Status</legend>
                     <div>
-                      <input type="radio" id="huey" name="drone" value="huey" checked />
-                      <label for="huey">In progress</label>
+                      <input type="radio" id="branch-status-inprogress" name="status" value="in-progress" required="required" />
+                      <label for="branch-status-inprogress">In progress</label>
                     </div>
                     <div>
-                      <input type="radio" id="dewey" name="drone" value="dewey" />
-                      <label for="dewey">Merged</label>
+                      <input type="radio" id="branch-status-merged" name="status" value="merged" required="required" />
+                      <label for="branch-status-merged">Merged</label>
                     </div>
                   </fieldset>
                 <input type="submit" value="Submit">

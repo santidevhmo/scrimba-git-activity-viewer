@@ -28,10 +28,14 @@ Stretch goals:
 
 ## Working Backend
 - [x] Define data structures of Team Members, Branches, and Actions
-- [] Render current data:
+- [x] Render current data:
     - [x] Render branches 
     - [x] Render members
 - [] Add functionality to "Register a new branch" button
+    - [x] Finish HTML form of this action
+    - [] Create util func that fills select values: call getData, get members data, select members selector and fill it with values (In progress)
+        - [] Start the server, open the built-in browser (cursor), check the console logs, talk to AI on how to fix this (apparently it's many things to fix)
+    - [] Add POST functionality to form: https://www.youtube.com/watch?v=dyD7NgGcphs&t=155s
 - [] Add functionality to "Edit Git Repo Name" button
 - [] Add functionality to "Create a new team member" button
 
