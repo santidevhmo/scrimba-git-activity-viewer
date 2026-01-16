@@ -10,12 +10,13 @@ async function renderBranches() {
     
     try {
         // Get branch data as Object
-        const getBranches = await fetch('../data/branches.json') // This is client side. This is an internal HTTP GET request)
+        const getBranches = await fetch('/data/branches.JSON') // This is client side. This is an internal HTTP GET request)
         if (!getBranches.ok) { 
-            throw new Error(`HTTP ${res.status}`)
+            throw new Error(`HTTP ${getBranches.status}`)
         }
         // Turn response to Object
         const branchesData = await getBranches.json()
+        console.log("Fetched branches:", branchesData)
 
         // Get branches list node
         let branchesListNode = document.getElementById('branches-list')
@@ -56,9 +57,9 @@ async function renderMembers() {
     
     try {
         // Get member data as Object
-        const getMembers = await fetch('../data/members.json') // This is client side. This is an internal HTTP GET request)
+        const getMembers = await fetch('/data/members.JSON') // This is client side. This is an internal HTTP GET request)
         if (!getMembers.ok) { 
-            throw new Error(`HTTP ${res.status}`)
+            throw new Error(`HTTP ${getMembers.status}`)
         }
         // Turn response to Object
         const membersData = await getMembers.json()

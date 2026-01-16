@@ -20,15 +20,13 @@ import { pid } from "node:process"
 export async function serveStatic(req, res, baseURL) {
     
     // Get file path as well as content type to pass to response callback
-    const filePath = path.join(
-        baseURL, 
-        req.url === '/' ? 'index.html' : req.url
-    )
+    const requestPath = req.url === '/' ? 'index.html' : req.url.slice(1)
+    const filePath = path.join(baseURL, requestPath)
     const contentType = mime.getType(filePath)
 
     // Using try catch to gracefully handle errors out of our control
     try {
-        console.log("RENDERING THIS FILE PATH = ", contentType)
+        console.log("Serving file:", filePath)
         // Turn the content to Buffer (bits) for browser to read successfully
         const content = await fs.readFile(filePath)
         // Send response and necessary properties to util func to end HTTP response successfully

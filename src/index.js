@@ -5,14 +5,13 @@ import handleFormSubmit from "./utils/handleFormSubmit.js";
 await renderBranches()
 await renderMembers()
 
-// Form submit handling
-let form = document.getElementById("new-branch-form")
-form.addEventListener("submit", async (event) => { 
-    // (Try/catch to handle errors from handleFormSubmit and its other internal async method calls)
-    try {
-        await handleFormSubmit(event)
-    } catch (err) {
-        throw new Error("BRANCH FORM SUBMISSION ERROR: ", err)
-    }
-})
-// (It's async because handleFormSubmit is async because it calls "addNewData", which is an async method)
+const form = document.getElementById("new-branch-form")
+if (form) {
+    form.addEventListener("submit", async (event) => { 
+        try {
+            await handleFormSubmit(event)
+        } catch (err) {
+            console.log("BRANCH FORM SUBMISSION ERROR:", err)
+        }
+    })
+}

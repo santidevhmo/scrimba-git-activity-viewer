@@ -1,8 +1,18 @@
 [
-    {
-        "id": "branch1",
-        "name": "main",
-        "status": "Root",
-        "members": ["dev1"]
-    }
+  {
+    "id": "branch1",
+    "name": "main",
+    "status": "Root",
+    "members": [
+      "dev1"
+    ]
+  },
+  {
+    "name": "Example branch",
+    "status": "in-progress"
+  },
+  {
+    "name": "Another branch!",
+    "status": "in-progress"
+  }
 ]

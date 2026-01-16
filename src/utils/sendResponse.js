@@ -7,6 +7,7 @@ export function sendResponse(res, statusCode, contentType, payload) {
     res.statusCode = statusCode
     // Specify the content type so browser knows what to do with it (render, read, etc)
     res.setHeader('Content-Type', contentType)
+    res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
     // Writes the response body and closes the HTTP response
     res.end(payload)
 }
