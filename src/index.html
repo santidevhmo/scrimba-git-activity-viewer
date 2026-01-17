@@ -26,21 +26,32 @@
             <h2>Register a new branch</h2>
             <!-- New Branch Submit Form -->
             <form id="new-branch-form" method="POST">
+                <!-- Branch Name Input -->
                 <label for="branch-name">Name</label><br>
-                <input type="text" id="branch-name" name="name" value="" placeholder="Steve Wozniak" required><br>
+                <input type="text" id="branch-name" name="name" value="" placeholder="Steve Wozniak" required>
+                <br>
+                <br>
+                <!-- Branch Status Radio Input -->
                 <fieldset>
                     <legend>Status</legend>
                     <div>
-                      <input type="radio" id="branch-status-inprogress" name="status" value="in-progress" required="required" />
-                      <label for="branch-status-inprogress">In progress</label>
+                        <input type="radio" id="branch-status-inprogress" name="status" value="in-progress"
+                            required="required" />
+                        <label for="branch-status-inprogress">In progress</label>
                     </div>
                     <div>
-                      <input type="radio" id="branch-status-merged" name="status" value="merged" required="required" />
-                      <label for="branch-status-merged">Merged</label>
+                        <input type="radio" id="branch-status-merged" name="status" value="merged"
+                            required="required" />
+                        <label for="branch-status-merged">Merged</label>
                     </div>
-                  </fieldset>
+                </fieldset>
+                <br>
+                <!-- Branch Members selector -->
+                <label for="branch-members">Members in this branch:</label>
+                <select id="branch-members" name="members" required>
+                </select>
                 <input type="submit" value="Submit">
-            </form> 
+            </form>
         </div>
         <!-- Branches List Container -->
         <div class="branches-container">

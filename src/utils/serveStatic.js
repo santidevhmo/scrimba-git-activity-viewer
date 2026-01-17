@@ -5,17 +5,18 @@ import fs from "node:fs/promises"
 import { sendResponse } from './sendResponse.js'
 import { pid } from "node:process"
 
-// ======================================
+// ============================================================================
 // serveStatic:
 // util func to serve local static files depending on the req url 
 // (Serve either index.html, page-not-found.html, etc)
-// ======================================
-// ======================================
+// ============================================================================
+// ============================================================================
 // PARAMS: 
 // res = to set status code, headers, new body, and send it back to browser
 // req = optional
-// baseURL = to get the file path on disk, handling different user OS systems and its file paths
-// ======================================
+// baseURL = to get the file path on disk, handling different user OS systems 
+// and its file paths
+// ============================================================================
 
 export async function serveStatic(req, res, baseURL) {
     

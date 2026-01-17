@@ -33,9 +33,8 @@ Stretch goals:
     - [x] Render members
 - [] Add functionality to "Register a new branch" button
     - [x] Finish HTML form of this action
-    - [] Create util func that fills select values: call getData, get members data, select members selector and fill it with values (In progress)
-        - [] Start the server, open the built-in browser (cursor), check the console logs, talk to AI on how to fix this (apparently it's many things to fix)
-    - [] Add POST functionality to form: https://www.youtube.com/watch?v=dyD7NgGcphs&t=155s
+    - [] Understand the new architecture for the "Register a new branch" submit functionality: ask Codex, add comments, deeply understand it.
+    - [x] Add functionality of selecting branch members: multi-select, filled by current members in JSON file, updated when adding a new member.
 - [] Add functionality to "Edit Git Repo Name" button
 - [] Add functionality to "Create a new team member" button
 
