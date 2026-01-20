@@ -41,9 +41,12 @@ document.getElementById('add-team-member').addEventListener("click", () => {
 })
 
 // Change Repo name btn handling
-document.getElementById('edit-repo-name-btn').addEventListener("click", () => {
-    // document.getElementById('repo-name').textContent = 
-})
+const editRepoNameButton = document.getElementById('edit-repo-name-btn')
+if (editRepoNameButton) {
+    editRepoNameButton.addEventListener("click", () => {
+        // document.getElementById('repo-name').textContent =
+    })
+}
 
 const form = document.getElementById("new-branch-form")
 if (form) {

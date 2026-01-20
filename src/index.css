@@ -1,8 +1,13 @@
+
 body {
     display: flex;
+    padding-top: 100px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    font-family: "Montserrat", sans-serif;
+    background-color: #000;
+    color: #fff;
 }
 
 main {
@@ -10,10 +15,20 @@ main {
     gap: 100px;
 }
 
+#site-title {
+    font-family: "Sixtyfour", sans-serif;
+    padding-bottom: 50px;
+}
+
 .actions-container {
     display: flex;
     flex-direction: column;
     gap: 5px;
+}
+
+.input-container,
+.branches-container {
+    max-width: 420px;
 }
 
 #new-branch-form-container {

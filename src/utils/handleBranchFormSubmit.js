@@ -8,7 +8,8 @@ export default async function handleBranchFormSubmit(event) {
     const formData = new FormData(event.target);
     const newBranch = {
         "name": formData.get("name"),
-        "status": formData.get("status")
+        "status": formData.get("status"),
+        "members": [formData.get("members")]
     }
     // No error handling because HTML input tags already have 'required' property set
 

@@ -10,35 +10,82 @@ async function renderBranches() {
     
     try {
         // Get branch data as Object
-        const getBranches = await fetch('/data/branches.JSON') // This is client side. This is an internal HTTP GET request
-        if (!getBranches.ok) { 
+        const [getBranches, getMembers] = await Promise.all([
+            fetch('/data/branches.JSON'),
+            fetch('/data/members.JSON')
+        ])
+        if (!getBranches.ok) {
             throw new Error(`HTTP ${getBranches.status}`)
+        }
+        if (!getMembers.ok) {
+            throw new Error(`HTTP ${getMembers.status}`)
         }
         // Turn response to Object
         const branchesData = await getBranches.json()
+        const membersData = await getMembers.json()
+        const memberNameById = new Map(membersData.map((member) => [member.id, member.name]))
+        const memberNameByName = new Map(membersData.map((member) => [member.name, member.name]))
 
         // Get branches list node
         let branchesListNode = document.getElementById('branches-list')
+        branchesListNode.innerHTML = ''
         
         // Traverse the branches and: create new node and append to branches list container
         for (let i = 0; i < branchesData.length; i++) {
             const branchNode = document.createElement('div');
-            // Create two paragraph elements
-            const branchNameNode = document.createElement('h3');
-            branchNameNode.textContent = branchesData[i].name
-            const branchStatusNode = document.createElement('p');
-            branchStatusNode.textContent = branchesData[i].status
-            // Append the paragraphs to the div
-            branchNode.appendChild(branchNameNode);
-            branchNode.appendChild(branchStatusNode);
+            branchNode.className = 'card bg-dark text-white border-secondary'
+            const cardBody = document.createElement('div')
+            cardBody.className = 'card-body'
 
-            // Append this new branch list element to the main branches list container
-            if (i === 0) { // If it's the first branch, remove empty list placeholder on current HTML and add the branch
-                branchesListNode.innerHTML = ''
-                branchesListNode.appendChild(branchNode)
+            const headerRow = document.createElement('div')
+            headerRow.className = 'd-flex align-items-center gap-2'
+            const branchIcon = document.createElement('i')
+            branchIcon.className = 'bi bi-git fs-4 text-info'
+            const branchNameNode = document.createElement('h3')
+            branchNameNode.className = 'h5 mb-0'
+            branchNameNode.textContent = branchesData[i].name
+            headerRow.appendChild(branchIcon)
+            headerRow.appendChild(branchNameNode)
+
+            const branchStatusNode = document.createElement('span')
+            branchStatusNode.className = 'badge text-bg-secondary ms-auto'
+            branchStatusNode.textContent = branchesData[i].status
+            headerRow.appendChild(branchStatusNode)
+
+            const membersWrapper = document.createElement('div')
+            membersWrapper.className = 'mt-3'
+            const membersLabel = document.createElement('div')
+            membersLabel.className = 'text-secondary small'
+            membersLabel.textContent = 'Members'
+            const membersList = document.createElement('div')
+            membersList.className = 'd-flex flex-wrap gap-2 mt-1'
+
+            const branchMembers = Array.isArray(branchesData[i].members) ? branchesData[i].members : []
+            if (branchMembers.length === 0) {
+                const emptyBadge = document.createElement('span')
+                emptyBadge.className = 'badge text-bg-secondary'
+                emptyBadge.textContent = 'No members'
+                membersList.appendChild(emptyBadge)
             } else {
-                branchesListNode.appendChild(branchNode)
+                for (const memberRef of branchMembers) {
+                    const memberName =
+                        memberNameById.get(memberRef) ||
+                        memberNameByName.get(memberRef) ||
+                        memberRef
+                    const memberBadge = document.createElement('span')
+                    memberBadge.className = 'badge text-bg-secondary'
+                    memberBadge.textContent = memberName
+                    membersList.appendChild(memberBadge)
+                }
             }
+
+            membersWrapper.appendChild(membersLabel)
+            membersWrapper.appendChild(membersList)
+
+            cardBody.appendChild(headerRow)
+            cardBody.appendChild(membersWrapper)
+            branchNode.appendChild(cardBody)
+            branchesListNode.appendChild(branchNode)
         }
 
 
@@ -65,26 +112,33 @@ async function renderMembers() {
 
         // Get members list node
         let membersListNode = document.getElementById('members-list')
+        membersListNode.innerHTML = ''
         
         // Traverse the members and: create new node and append to branches list container
         for (let i = 0; i < membersData.length; i++) {
             const memberNode = document.createElement('div');
-            // Create two paragraph elements
-            const memberNameNode = document.createElement('h3');
-            memberNameNode.textContent = membersData[i].name
-            const memberRoleNode = document.createElement('p');
-            memberRoleNode.textContent = membersData[i].role
-            // Append the paragraphs to the div
-            memberNode.appendChild(memberNameNode);
-            memberNode.appendChild(memberRoleNode);
+            memberNode.className = 'card bg-dark text-white border-secondary'
+            const cardBody = document.createElement('div')
+            cardBody.className = 'card-body'
 
-            // Append this new branch list element to the main branches list container
-            if (i === 0) { // If it's the first branch, remove empty list placeholder on current HTML and add the branch
-                membersListNode.innerHTML = ''
-                membersListNode.appendChild(memberNode)
-            } else {
-                membersListNode.appendChild(memberNode)
-            }
+            const headerRow = document.createElement('div')
+            headerRow.className = 'd-flex align-items-center gap-2'
+            const memberIcon = document.createElement('i')
+            memberIcon.className = 'bi bi-person-badge fs-4 text-warning'
+            const memberNameNode = document.createElement('h3')
+            memberNameNode.className = 'h5 mb-0'
+            memberNameNode.textContent = membersData[i].name
+            headerRow.appendChild(memberIcon)
+            headerRow.appendChild(memberNameNode)
+
+            const memberRoleNode = document.createElement('p')
+            memberRoleNode.className = 'text-secondary mb-0 mt-2'
+            memberRoleNode.textContent = membersData[i].role
+
+            cardBody.appendChild(headerRow)
+            cardBody.appendChild(memberRoleNode)
+            memberNode.appendChild(cardBody)
+            membersListNode.appendChild(memberNode)
         }
 
 

@@ -4,19 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Sixtyfour&display=swap"
+        rel="stylesheet">
+    <!-- Site Title -->
     <title>Git Branches Panel</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
-    <h1 id="repo-name">Manual Git Repo Manager</h1>
+    <br>
+    <br>
+    <h1 id="site-title">Manual Git Repo Manager</h1>
 
     <main>
         <!-- Buttons with actions -->
         <div class="actions-container">
             <h1>Actions</h1>
-            <button id="register-new-branch-btn">Register a new branch</button>
-            <button id="add-team-member">Add a new team member</button>
+            <button id="register-new-branch-btn" class="btn btn-outline-light">Register a new branch</button>
+            <button id="add-team-member" class="btn btn-outline-light">Add a new team member</button>
         </div>
         <!-- Inputs to fill to add new elements -->
         <div class="input-container">
@@ -25,12 +39,13 @@
             <div id="new-branch-form-container">
                 <h2>Register a new branch</h2>
                 <!-- New Branch Submit Form -->
-                <form id="new-branch-form" method="POST">
+                <form id="new-branch-form" method="POST" class="d-flex flex-column gap-3">
                     <!-- Branch Name Input -->
-                    <label for="branch-name">Name</label><br>
-                    <input type="text" id="branch-name" name="name" value="" placeholder="Steve Wozniak" required>
-                    <br>
-                    <br>
+                    <div>
+                        <label for="branch-name" class="form-label">Name</label>
+                        <input type="text" id="branch-name" name="name" value="" placeholder="Steve Wozniak" required
+                            class="form-control bg-dark text-white border-secondary">
+                    </div>
                     <!-- Branch Status Radio Input -->
                     <fieldset>
                         <legend>Status</legend>
@@ -45,29 +60,33 @@
                             <label for="branch-status-merged">Merged</label>
                         </div>
                     </fieldset>
-                    <br>
                     <!-- Branch Members selector -->
-                    <label for="branch-members">Members in this branch:</label>
-                    <select id="branch-members" name="members" required>
-                    </select>
-                    <input type="submit" value="Submit">
+                    <div>
+                        <label for="branch-members" class="form-label">Members in this branch:</label>
+                        <select id="branch-members" name="members" required
+                            class="form-select bg-dark text-white border-secondary">
+                        </select>
+                    </div>
+                    <input type="submit" value="Submit" class="btn btn-light">
                 </form>
             </div>
             <div id="new-member-form-container">
                 <h2>Add a new team member</h2>
                 <!-- New Member Submit Form -->
-                <form id="new-member-form" method="POST">
+                <form id="new-member-form" method="POST" class="d-flex flex-column gap-3">
                     <!-- Member Name Input -->
-                    <label for="member-name">Name</label><br>
-                    <input type="text" id="member-name" name="name" value="" placeholder="Ada Lovelace" required>
-                    <br>
-                    <br>
+                    <div>
+                        <label for="member-name" class="form-label">Name</label>
+                        <input type="text" id="member-name" name="name" value="" placeholder="Ada Lovelace" required
+                            class="form-control bg-dark text-white border-secondary">
+                    </div>
                     <!-- Member Role Input -->
-                    <label for="member-role">Role</label><br>
-                    <input type="text" id="member-role" name="role" value="" placeholder="Backend Developer" required>
-                    <br>
-                    <br>
-                    <input type="submit" value="Submit">
+                    <div>
+                        <label for="member-role" class="form-label">Role</label>
+                        <input type="text" id="member-role" name="role" value="" placeholder="Backend Developer" required
+                            class="form-control bg-dark text-white border-secondary">
+                    </div>
+                    <input type="submit" value="Submit" class="btn btn-light">
                 </form>
             </div>
         </div>
@@ -75,7 +94,7 @@
             <!-- Branches List Container -->
             <div class="branches-container">
                 <h1>Project branches</h1>
-                <div id="branches-list">
+                <div id="branches-list" class="d-flex flex-column gap-3">
                     <p>Loading branches...</p>
                 </div>
             </div>
@@ -85,15 +104,18 @@
             <!-- Team members list container -->
             <div>
                 <h1>Team members</h1>
-                <div id="members-list">
+                <div id="members-list" class="d-flex flex-column gap-3">
                     <p>No team members yet</p>
                 </div>
             </div>
         </div>
 
     </main>
-
-    </div>
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <!-- Local JS -->
     <script type="module" src="index.js"></script>
 </body>
 
