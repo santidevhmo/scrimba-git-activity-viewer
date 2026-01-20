@@ -2,7 +2,6 @@
 A manually-updated Git repo and member viewer. 
 This is a practice project done as part of the Node JS section of Scrimba's Fullstack course.
 
-https://github.com/user-attachments/assets/f31e45f9-1e28-4a36-b13d-44becde3addd
 
 
 ## Topics put into practice
