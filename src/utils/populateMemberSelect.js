@@ -12,6 +12,7 @@ export async function populateMemberSelect() {
 
     // Select the HTML Node
     const selectElement = document.getElementById("branch-members")
+    selectElement.innerHTML = ''
     // Traverse through current members and populate the select node
     for (let member of membersJSON) {
         const option = document.createElement('option')

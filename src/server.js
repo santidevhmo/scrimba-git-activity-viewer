@@ -52,6 +52,44 @@ const server = http.createServer(async (req,res) => {
             return res.end(JSON.stringify({ error: "failed to add branch" }))
         }
     
+    // POST ENDPOINT : add a new member
+    } else if (req.url === '/api/members' && req.method === 'POST') {
+        try {
+            console.log("POST /api/members received")
+            let body = ''
+            for await (const chunk of req) {
+                body += chunk
+            }
+            const newMember = JSON.parse(body)
+            console.log("Parsed member payload:", newMember)
+            if (!newMember?.name || !newMember?.role) {
+                res.statusCode = 400
+                res.setHeader("Content-Type", "application/json")
+                return res.end(JSON.stringify({ error: "name and role are required" }))
+            }
+
+            const dataFilePath = path.join(__dirname, 'data', 'members.JSON')
+            console.log("Writing members to:", dataFilePath)
+            const fileContents = await fs.readFile(dataFilePath, 'utf8')
+            const membersData = JSON.parse(fileContents)
+            membersData.push(newMember)
+            await fs.writeFile(
+                dataFilePath,
+                JSON.stringify(membersData, null, 2),
+                'utf8'
+            )
+            console.log("Member saved. Total members:", membersData.length)
+
+            res.statusCode = 201
+            res.setHeader("Content-Type", "application/json")
+            return res.end(JSON.stringify({ ok: true }))
+        } catch (err) {
+            console.log("POST /api/members error:", err)
+            res.statusCode = 500
+            res.setHeader("Content-Type", "application/json")
+            return res.end(JSON.stringify({ error: "failed to add member" }))
+        }
+    
     // If URL is /team, render team list
     } else if (req.url === '/team') {
         console.log("TEAM LIST RENDERED HERE")

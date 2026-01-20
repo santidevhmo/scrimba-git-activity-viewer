@@ -15,3 +15,11 @@ main {
     flex-direction: column;
     gap: 5px;
 }
+
+#new-branch-form-container {
+    display: none;
+}
+
+#new-member-form-container {
+    display: none;
+}

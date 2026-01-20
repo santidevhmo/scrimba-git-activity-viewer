@@ -1,6 +1,6 @@
 import { renderBranches } from "./renderData.js";
 
-export default async function handleFormSubmit(event) {
+export default async function handleBranchFormSubmit(event) {
 
     event.preventDefault() // Stop default browser redirect its form submit action
 
@@ -14,7 +14,6 @@ export default async function handleFormSubmit(event) {
 
     // Push new data via server 
     // (this is server-side handling code, not client handling)
-    console.log("Submitting branch:", newBranch)
     const res = await fetch("/api/branches", {
         method: "POST",
         headers: {

@@ -1,8 +1,10 @@
 [
-    {
-        "id": "dev1",
-        "name": "Larry Page",
-        "role" : "Frontend Developer",
-        "branches" : ["branch1"]
-    }
+  {
+    "id": "dev1",
+    "name": "Larry Page",
+    "role": "Frontend Developer",
+    "branches": [
+      "branch1"
+    ]
+  }
 ]
